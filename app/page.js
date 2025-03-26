@@ -6,7 +6,7 @@ import { usePosts } from "./context/PostsContext";
 import Link from "next/link";
 
 const Page = () => {
-  const { posts, setPosts } = usePosts([]); // Post Context
+  const { posts, setPosts } = usePosts(); // Post Context
   const [addPostInfo, setAddPostInfo] = useState({
     title: '',
     content: '',
@@ -53,6 +53,7 @@ const Page = () => {
     <>
       <AddPostForm
         info={addPostInfo}
+        posts={posts}
         setTitle={setAddPostTitle}
         setContent={setAddPostContent}
         handleImage={handleAddPostImage}
@@ -61,7 +62,7 @@ const Page = () => {
       />
       {posts.map((item, idx) => {
         return (
-          <div key={idx}>
+          <div key={idx} style={{ border: '2px solid black', margin: '3px', width: '500px' }}>
             <div>{item.title}</div>
             <div>{item.content}</div>
             { item.image && <img src={item.image} alt="image preview" style={{ width: '200px', height: 'auto' }} />}

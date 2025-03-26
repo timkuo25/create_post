@@ -55,35 +55,33 @@ const PostEdit = ({ params }) => {
   }
 
   return (
-    <>
-      <form onSubmit={e => commitModify(e)}>
-        <label>
-          Title:
-          <input
-            type="text"
-            value={post.title}
-            onChange={e => changePostTitle(e, postIdx)}
-            />
-        </label>
-        <label>
-          Content:
-          <input
-            type="text"
-            value={post.content}
-            onChange={e => changePostContent(e, postIdx)}
+    <form onSubmit={e => commitModify(e)}>
+      <label>
+        Title:
+        <input
+          type="text"
+          value={post.title}
+          onChange={e => changePostTitle(e, postIdx)}
           />
-        </label>
-        {post.image && (
-          <div>
-            <div>Image Preview</div>
-            <img src={post.image} alt="image preview" style={{ width: '200px', height: 'auto' }} />
-          </div>
-        )}
-        <input type="file" onChange={e => handlePostImage(e, postIdx)} accept="image/*"/>
-        <button type="submit">submit</button>
-        <button type="delete" onClick={() => deletePost(postIdx)}>delete</button>
-      </form>
-    </>
+      </label>
+      <label>
+        Content:
+        <input
+          type="text"
+          value={post.content}
+          onChange={e => changePostContent(e, postIdx)}
+        />
+      </label>
+      {post.image && (
+        <div>
+          <div>Image Preview</div>
+          <img src={post.image} alt="image preview" style={{ width: '200px', height: 'auto' }} />
+        </div>
+      )}
+      <input type="file" onChange={e => handlePostImage(e, postIdx)} accept="image/*"/>
+      <button type="submit">submit</button>
+      <button type="delete" onClick={() => deletePost(postIdx)}>delete</button>
+    </form>
   )
 }
 

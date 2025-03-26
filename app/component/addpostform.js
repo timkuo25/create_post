@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-const AddPostForm = ( {info, setTitle, setContent, handleImage, handleSubmit, handleDelete} ) => {
+const AddPostForm = ( {info, posts, setTitle, setContent, handleImage, handleSubmit, handleDelete} ) => {
   const uploadID = useId();
   return (
     <form onSubmit={e => handleSubmit(e)}>
@@ -31,7 +31,7 @@ const AddPostForm = ( {info, setTitle, setContent, handleImage, handleSubmit, ha
       </label>
       <input type="file" id={uploadID} onChange={e => handleImage(e)} accept="image/*" style={{ display: 'none' }}/>
       <button type="submit">submit</button>
-      <button type="button" onClick={handleDelete}>remove</button>
+      {posts.length > 0 ? <button type="button" onClick={handleDelete}>remove recent</button> : null}
     </form>
   )
 }
